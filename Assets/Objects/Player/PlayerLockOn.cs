@@ -7,8 +7,13 @@ public class PlayerLockOn : MonoBehaviour
 {
     private bool isLock;
 
+    [Header("Camera")]
     [SerializeField] private CinemachineStateDrivenCamera cameraState;
     private Animator anim;
+
+    [Header("Lock")]
+    [SerializeField] float checkRadius;
+    [SerializeField] private LayerMask lockableMask;
 
     void Awake()
     {
@@ -22,9 +27,26 @@ public class PlayerLockOn : MonoBehaviour
 
     public void LockInput()
     {
-        if (isLock) anim.Play("ThirdPersonCamera");
+        /*if (isLock) anim.Play("ThirdPersonCamera");
         else anim.Play("TargetCamera");
 
-        isLock = !isLock;
+        isLock = !isLock;*/
+
+        LockableSphere();
+    }
+
+    void LockableSphere()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, lockableMask);
+        foreach (Collider collider in hitColliders)
+        {
+            Debug.Log(collider.name);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 }
