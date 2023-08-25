@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    private Vector2 movementInput;
 
+    [Header("Movement")]
+    private Vector2 movementInput;
     [SerializeField] private float speed;
-    
     [SerializeField] private float turnSmoothTime;
     private float turnSmoothVelocity;
 
-    public Transform cam;
+    [Header("Camera")]
+    [SerializeField] private Transform cam;
 
     void Awake()
     {
@@ -41,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.velocity = moveDir * speed ;
     }
-
 
 
     #region Input Detection
