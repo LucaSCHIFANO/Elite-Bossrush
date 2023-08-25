@@ -1082,8 +1082,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727253682}
-  m_LocalRotation: {x: 0.12811042, y: 0.01727297, z: -0.0022315772, w: 0.99160695}
-  m_LocalPosition: {x: -0.5786064, y: 5.0040684, z: -9.894654}
+  m_LocalRotation: {x: 0.13028705, y: 0.017802844, z: -0.002339804, w: 0.99131376}
+  m_LocalPosition: {x: -0.58863133, y: 5.0465336, z: -9.883034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1685,6 +1685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraState: {fileID: 23349879}
+  checkRadius: 15
+  lockableMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1625898760
 GameObject:
   m_ObjectHideFlags: 0
