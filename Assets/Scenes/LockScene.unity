@@ -414,7 +414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128604007}
-  m_LocalRotation: {x: 0.046224926, y: 0.000000017582627, z: -8.136254e-10, w: 0.9989311}
+  m_LocalRotation: {x: 0.046224926, y: 0.000000017581332, z: -8.1356544e-10, w: 0.9989311}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -501,7 +501,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.06433938, y: -0.000000008585366, z: 5.5352395e-10, w: 0.9979281}
+  m_LocalRotation: {x: 0.06433938, y: -0.000000008585278, z: 5.535183e-10, w: 0.9979281}
   m_LocalPosition: {x: 0, y: 7, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1057,8 +1057,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727253682}
-  m_LocalRotation: {x: 0.7007958, y: 0.012827085, z: -0.012605136, w: 0.71313524}
-  m_LocalPosition: {x: -0.24803989, y: 12.46107, z: -0.40327954}
+  m_LocalRotation: {x: 0.7007958, y: 0.012825593, z: -0.012603672, w: 0.7131353}
+  m_LocalPosition: {x: -0.24803919, y: 12.461073, z: -0.4032792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1545,7 +1545,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076881388}
-  m_LocalRotation: {x: 0.06433938, y: -0.0000000038984393, z: 2.5134403e-10, w: 0.9979281}
+  m_LocalRotation: {x: 0.06433938, y: -0.0000000038982266, z: 2.5133026e-10, w: 0.9979281}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1838,6 +1838,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1f4931f9-6864-4cf3-a40c-a4b4b4e14fd7
     m_ActionName: PlayerMovement/LockOn[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1399b00d-d07b-48ad-88c4-a2d0274fc8e4
+    m_ActionName: PlayerMovement/CameraMove[/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1415038485}
+        m_TargetAssemblyTypeName: PlayerLockOn, Assembly-CSharp
+        m_MethodName: ChangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b473dd78-41f6-4948-a181-51acd2dc2476
+    m_ActionName: PlayerMovement/ChangeTarget[/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -1862,6 +1894,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxAngleCheck: 60
+  maxAngleChangeTarget: 90
 --- !u!1001 &1494509837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2277,7 +2310,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780136263}
-  m_LocalRotation: {x: 0.08248053, y: 3.9371617e-10, z: -3.258488e-11, w: 0.9965927}
+  m_LocalRotation: {x: 0.08248053, y: 3.9375436e-10, z: -3.2587988e-11, w: 0.9965927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

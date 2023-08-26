@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PlayerLockOn : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class PlayerLockOn : MonoBehaviour
     [SerializeField] float checkRadius;
     [SerializeField] private LayerMask lockableMask;
     [SerializeField] float maxAngleCheck;
+    [SerializeField] float maxAngleChangeTarget;
+    private GameObject currentTarget;
 
     void Awake()
     {
@@ -25,17 +29,6 @@ public class PlayerLockOn : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void LockInput()
-    {
-        if (isLock)
-        {
-            anim.Play("ThirdPersonCamera");
-            isLock = !isLock;
-        }
-        else LockableSphere();
-
     }
 
     void LockableSphere()
@@ -64,6 +57,53 @@ public class PlayerLockOn : MonoBehaviour
             anim.Play("TargetCamera");
             targetCamera.LookAt = closestTarget.transform;
             isLock = !isLock;
+            currentTarget = closestTarget;
+        }
+        else Debug.Log("No target found");
+    }
+
+    void ChangeTarget(bool left)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, lockableMask);
+        float closestAngle = maxAngleChangeTarget;
+        GameObject closestTarget = null;
+
+
+        foreach (Collider collider in hitColliders)
+        {
+            Vector3 dir = collider.transform.position - Camera.main.transform.position;
+            //dir.y = 0;
+
+            float angle = Vector3.Angle(Camera.main.transform.forward, dir);
+
+            if (collider.gameObject == currentTarget) { continue; }
+
+            if (left)
+            {
+                if (angle < closestAngle && Camera.main.WorldToScreenPoint(collider.transform.position).x < Camera.main.WorldToScreenPoint(currentTarget.transform.position).x)
+                {
+                    closestAngle = angle;
+                    closestTarget = collider.gameObject;
+                }
+            }
+            else
+            {
+                if (angle < closestAngle && Camera.main.WorldToScreenPoint(collider.transform.position).x > Camera.main.WorldToScreenPoint(currentTarget.transform.position).x)
+                {
+                    closestAngle = angle;
+                    closestTarget = collider.gameObject;
+                }
+            }
+            
+
+        }
+
+        if (closestTarget != null)
+        {
+            anim.Play("TargetCamera");
+            targetCamera.LookAt = closestTarget.transform;
+            isLock = !isLock;
+            currentTarget = closestTarget;
         }
         else Debug.Log("No target found");
     }
@@ -73,4 +113,30 @@ public class PlayerLockOn : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
+
+    #region Input Detection
+
+    public void LockInput()
+    {
+        if (isLock)
+        {
+            anim.Play("ThirdPersonCamera");
+            isLock = !isLock;
+            currentTarget = null;
+        }
+        else LockableSphere();
+
+    }
+
+    public void ChangeTarget(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        float movementInput = context.ReadValue<float>();
+
+        if(movementInput > 0) { ChangeTarget(false); }
+        else if (movementInput < 0) { ChangeTarget(true); }
+    }
+
+    #endregion
 }
