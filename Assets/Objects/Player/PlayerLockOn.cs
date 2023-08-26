@@ -116,8 +116,10 @@ public class PlayerLockOn : MonoBehaviour
 
     #region Input Detection
 
-    public void LockInput()
+    public void LockInput(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
+
         if (isLock)
         {
             anim.Play("ThirdPersonCamera");
@@ -128,9 +130,9 @@ public class PlayerLockOn : MonoBehaviour
 
     }
 
-    public void ChangeTarget(InputAction.CallbackContext context)
+    public void ChangeTargetInput(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
+        if (!context.started || currentTarget == null) return;
 
         float movementInput = context.ReadValue<float>();
 

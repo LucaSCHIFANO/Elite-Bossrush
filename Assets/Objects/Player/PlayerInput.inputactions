@@ -235,7 +235,7 @@
                     "id": "64bfa495-a2f3-4e44-aba5-cbad8d4b2b64",
                     "path": "1DAxis",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone",
                     "groups": "",
                     "action": "ChangeTarget",
                     "isComposite": true,
