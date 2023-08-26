@@ -20,6 +20,9 @@ public class PlayerLockOn : MonoBehaviour
     [SerializeField] float maxAngleCheck;
     [SerializeField] float maxAngleChangeTarget;
     private GameObject currentTarget;
+    
+    [SerializeField] LockUI lockUI;
+
 
     void Awake()
     {
@@ -31,7 +34,7 @@ public class PlayerLockOn : MonoBehaviour
         
     }
 
-    void LockableSphere()
+    void SetTarget()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, lockableMask);
         float closestAngle = maxAngleCheck;
@@ -52,13 +55,7 @@ public class PlayerLockOn : MonoBehaviour
            
         }
 
-        if (closestTarget != null)
-        {
-            anim.Play("TargetCamera");
-            targetCamera.LookAt = closestTarget.transform;
-            isLock = !isLock;
-            currentTarget = closestTarget;
-        }
+        if (closestTarget != null) ApplyTarget(closestTarget);
         else Debug.Log("No target found");
     }
 
@@ -98,14 +95,25 @@ public class PlayerLockOn : MonoBehaviour
 
         }
 
-        if (closestTarget != null)
-        {
-            anim.Play("TargetCamera");
-            targetCamera.LookAt = closestTarget.transform;
-            isLock = !isLock;
-            currentTarget = closestTarget;
-        }
+        if (closestTarget != null) ApplyTarget(closestTarget);
         else Debug.Log("No target found");
+    }
+
+    void ApplyTarget(GameObject newTarget)
+    {
+        anim.Play("TargetCamera");
+        targetCamera.LookAt = newTarget.transform;
+        isLock = !isLock;
+        currentTarget = newTarget;
+        lockUI.SetTarget(currentTarget);
+    }
+
+    void EmptyTarget()
+    {
+        anim.Play("ThirdPersonCamera");
+        isLock = !isLock;
+        currentTarget = null;
+        lockUI.SetTarget(null);
     }
 
     private void OnDrawGizmosSelected()
@@ -120,13 +128,8 @@ public class PlayerLockOn : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (isLock)
-        {
-            anim.Play("ThirdPersonCamera");
-            isLock = !isLock;
-            currentTarget = null;
-        }
-        else LockableSphere();
+        if (isLock) EmptyTarget();
+        else SetTarget();
 
     }
 
