@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 3457027364135088000}
   - component: {fileID: 3457027364135088006}
   - component: {fileID: 3457027364135088001}
+  - component: {fileID: 7148768569360158319}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -371,7 +372,19 @@ MonoBehaviour:
     m_ActionId: b473dd78-41f6-4948-a181-51acd2dc2476
     m_ActionName: PlayerMovement/ChangeTarget[/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7148768569360158319}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: BasicAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4bb9a6ee-67ab-4aef-8f59-e5627f06c1f5
     m_ActionName: PlayerMovement/BasicAttack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -415,6 +428,21 @@ MonoBehaviour:
   maxAngleCheck: 60
   maxAngleChangeTarget: 90
   lockUI: {fileID: 0}
+--- !u!114 &7148768569360158319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457027364135088004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a291c960366e2445a9201ee971b0874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: a8ec7a0d0e4ee684c94b9ed32a72b8eb, type: 2}
+  comboCounterResetCooldown: 0.65
+  animator: {fileID: 5496796775129815501}
 --- !u!1 &3457027364594967333
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3457027364594967334}
+  - component: {fileID: 5496796775129815501}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -447,3 +476,24 @@ Transform:
   m_Father: {fileID: 3457027364135088005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5496796775129815501
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457027364594967333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5e5b64fe361e0148ba533ebeba59353, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
