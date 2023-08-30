@@ -12,38 +12,68 @@ public class PlayerCombat : MonoBehaviour
 
     private int comboCounter = 0;
     private float comboCounterTimer;
+    private bool attackInputTriggered;
+    private bool isAttacking;
+
+    private void Start()
+    {
+        weapon?.Initialize(animator.runtimeAnimatorController);
+    }
 
     private void Update()
     {
-        if(comboCounter != 0 && comboCounterTimer <= 0)
-        {
-            comboCounter = 0;
-        }
-        else if (comboCounterTimer > 0)
-        {
+        // Decrease Combo window Timer
+        if (comboCounterTimer > 0)
             comboCounterTimer -= Time.deltaTime;
-        }
+
+        if (isAttacking)
+            return;
+
+        // End Combo if Combo window Expired
+        if(comboCounter != 0 && comboCounterTimer <= 0)
+            EndCombo();
+        
+        // Trigger Attack if input buffered
+        if (attackInputTriggered)
+            TriggerAttack();
     }
 
     public void BasicAttackInput(InputAction.CallbackContext context)
     {
         if (!context.started)
             return;
-
-        TriggerAttack();
+        attackInputTriggered = true;
     }
 
     private void TriggerAttack()
     {
         var attack = weapon.GetAttackFromCombo(comboCounter);
 
-        animator.runtimeAnimatorController = attack.animOV;
+        animator.runtimeAnimatorController = attack.AnimationOverride;
         animator.Play("Attack");
-
         attack.Activate();
 
-        comboCounter += attack.ComboEnd ? 0 : 1;
+        if (attack.ComboEnd)
+            Invoke(nameof(EndCombo), attack.ClipLength);
+        else
+        {
+            Invoke(nameof(EndAttack), attack.ClipLength);
+            comboCounter++;
+        }
 
         comboCounterTimer = comboCounterResetCooldown;
+        isAttacking = true;
+        attackInputTriggered = false;
+    }
+
+    private void EndAttack()
+    {
+        isAttacking = false;
+    }
+
+    private void EndCombo()
+    {
+        EndAttack();
+        comboCounter = 0;
     }
 }

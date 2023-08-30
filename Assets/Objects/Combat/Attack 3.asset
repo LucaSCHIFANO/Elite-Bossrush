@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a0e707c90033841b0d3dcce45be60b, type: 3}
   m_Name: Attack 3
   m_EditorClassIdentifier: 
-  animOV: {fileID: 22100000, guid: ba55f6e172e63804bb8ba0a8a1301222, type: 2}
   damage: 5000
   ComboEnd: 1
+  attackAnimationClip: {fileID: 7400000, guid: 10c2c896b4fa55c45af3ef4324e35e43, type: 2}
