@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private Transform cam;
+    [SerializeField] private CinemachineFreeLook freeLook;
+    private Vector2 cameraMovementInput;
+    [SerializeField] Vector2 cameraSpeed;
 
     void Awake()
     {
@@ -26,10 +30,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+        CameraMovement(); ;
     }
 
 
-    public void Movement()
+    void Movement()
     {
         Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y);
         Vector3 moveDir = Vector3.zero;
@@ -44,12 +49,23 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = moveDir * speed ;
     }
 
+    void CameraMovement()
+    {
+        freeLook.m_XAxis.Value += cameraMovementInput.x * cameraSpeed.x;
+        freeLook.m_YAxis.Value += cameraMovementInput.y * cameraSpeed.y;
+    }
+
 
     #region Input Detection
 
     public void MovementInput(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
+    }
+
+    public void CameraMovementInput(InputAction.CallbackContext context)
+    {
+        cameraMovementInput = context.ReadValue<Vector2>();
     }
 
     #endregion

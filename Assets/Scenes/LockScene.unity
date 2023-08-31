@@ -414,8 +414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128604007}
-  m_LocalRotation: {x: 0.046224926, y: -0.000000033981337, z: 0.0000000015724654,
-    w: 0.9989311}
+  m_LocalRotation: {x: 0.046224926, y: -0.00000003399274, z: 0.0000000015729935, w: 0.9989311}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -508,7 +507,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.06433938, y: 0.000000008585366, z: -5.5352395e-10, w: 0.9979281}
+  m_LocalRotation: {x: 0.06433938, y: 0.0000000085861735, z: -5.53576e-10, w: 0.9979281}
   m_LocalPosition: {x: 0, y: 7, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -760,7 +759,7 @@ MonoBehaviour:
     m_MaxSpeed: 2
     m_AccelTime: 0.2
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -784,7 +783,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -868,8 +867,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727253682}
-  m_LocalRotation: {x: 0.7007959, y: 0.012826795, z: -0.012604857, w: 0.7131352}
-  m_LocalPosition: {x: -0.24804035, y: 12.461071, z: -0.40327942}
+  m_LocalRotation: {x: 0.70079595, y: 0.012822855, z: -0.012600983, w: 0.7131353}
+  m_LocalPosition: {x: -0.24803847, y: 12.461071, z: -0.40327942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1461,7 +1460,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076881388}
-  m_LocalRotation: {x: 0.06433938, y: -0.000000012483804, z: 8.0486784e-10, w: 0.9979281}
+  m_LocalRotation: {x: 0.06433938, y: -0.00000001248429, z: 8.0489926e-10, w: 0.9979281}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1724,6 +1723,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3457027362863212948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415038484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3457027364135088006, guid: 5d42acd8306da414ebf394b4e07b36a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3457027362863212948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f040f7dd4c8d354cab110ca6b26ad4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1494509837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2207,7 +2218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780136263}
-  m_LocalRotation: {x: 0.08248053, y: -0.00000001675404, z: 0.0000000013866066, w: 0.9965927}
+  m_LocalRotation: {x: 0.08248053, y: -0.000000016756136, z: 0.00000000138678, w: 0.9965927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2630,6 +2641,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3457027364135088000, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457027364135088000, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1415038484}
+    - target: {fileID: 3457027364135088000, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CameraMovementInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457027364135088000, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457027364135088000, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3457027364135088001, guid: 5d42acd8306da414ebf394b4e07b36a9,
         type: 3}
       propertyPath: lockUI
@@ -2710,5 +2746,20 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 3457027364135088006, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: freeLook
+      value: 
+      objectReference: {fileID: 480351062}
+    - target: {fileID: 3457027364135088006, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: cameraSpeed.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457027364135088006, guid: 5d42acd8306da414ebf394b4e07b36a9,
+        type: 3}
+      propertyPath: cameraSpeed.y
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d42acd8306da414ebf394b4e07b36a9, type: 3}
