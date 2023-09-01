@@ -123,25 +123,21 @@ public class PlayerLockOn : MonoBehaviour
     }
 
 
-    #region Input Detection
+    #region Inputs 
 
-    public void LockInput(InputAction.CallbackContext context)
+    public void LockInput()
     {
-        if (!context.started) return;
-
         if (isLock) EmptyTarget();
         else SetTarget();
 
     }
 
-    public void ChangeTargetInput(InputAction.CallbackContext context)
+    public void ChangeTargetInput(float context)
     {
-        if (!context.started || currentTarget == null) return;
+        if (currentTarget == null) return;
 
-        float movementInput = context.ReadValue<float>();
-
-        if(movementInput > 0) { ChangeTarget(false); }
-        else if (movementInput < 0) { ChangeTarget(true); }
+        if(context > 0) { ChangeTarget(false); }
+        else if (context < 0) { ChangeTarget(true); }
     }
 
     #endregion

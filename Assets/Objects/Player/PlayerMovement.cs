@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private float dodgeDurationTimer;
     [SerializeField] private float dodgeCoolDown;
     private float dodgeCoolDownTimer;
+    private bool resetDodgeOnce;
 
 
     void Awake()
@@ -98,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         actualSpeed = speed * speedMultiplicator;
         dodgeDurationTimer = dodgeDuration;
         dodgeCoolDownTimer = dodgeCoolDown;
+        resetDodgeOnce = true;
         animator.Play("Dodge");
     }
 
@@ -106,29 +108,30 @@ public class PlayerMovement : MonoBehaviour
         dodgeDurationTimer -= Time.deltaTime;
         dodgeCoolDownTimer -= Time.deltaTime;
 
-        if (dodgeDurationTimer < 0)
+        if (dodgeDurationTimer < 0 && resetDodgeOnce)
         {
+            resetDodgeOnce = false;
             animator.Play("Idle");
             actualSpeed = speed;
         }
     }
 
 
-    #region Input Detection
+    #region Inputs 
 
-    public void MovementInput(InputAction.CallbackContext context)
+
+    public void MovementInput(Vector2 context)
     {
-        movementInput = context.ReadValue<Vector2>();
+        movementInput = context;
     }
 
-    public void CameraMovementInput(InputAction.CallbackContext context)
+    public void CameraMovementInput(Vector2 context)
     {
-        cameraMovementInput = context.ReadValue<Vector2>();
+        cameraMovementInput = context;
     }
 
-    public void DodgeInput(InputAction.CallbackContext context)
+    public void DodgeInput()
     {
-        if (!context.performed) return;
         Dodge();
     }
 

@@ -18,12 +18,12 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
-        weapon?.Initialize(animator.runtimeAnimatorController);
     }
 
     public void Initialized(Animator _animator)
     {
         animator = _animator;
+        weapon?.Initialize(animator.runtimeAnimatorController);
     }
 
     private void Update()
@@ -42,13 +42,6 @@ public class PlayerCombat : MonoBehaviour
         // Trigger Attack if input buffered
         if (attackInputTriggered)
             TriggerAttack();
-    }
-
-    public void BasicAttackInput(InputAction.CallbackContext context)
-    {
-        if (!context.started)
-            return;
-        attackInputTriggered = true;
     }
 
     private void TriggerAttack()
@@ -82,4 +75,14 @@ public class PlayerCombat : MonoBehaviour
         EndAttack();
         comboCounter = 0;
     }
+
+
+    #region Inputs 
+
+    public void BasicAttackInput()
+    {
+        attackInputTriggered = true;
+    }
+
+    #endregion
 }

@@ -1,7 +1,9 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,8 +26,46 @@ public class PlayerController : MonoBehaviour
         playerCombat.Initialized(animator);
     }
 
-    void Update()
+    #region Inputs Detection
+
+    //Movement
+    public void MovementInput(InputAction.CallbackContext context)
     {
-        
+        playerMovement.MovementInput(context.ReadValue<Vector2>());
     }
+
+    public void CameraMovementInput(InputAction.CallbackContext context)
+    {
+        playerMovement.CameraMovementInput(context.ReadValue<Vector2>());
+    }
+
+    public void DodgeInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        playerMovement.DodgeInput();
+    }
+
+    // Lock On
+    public void LockInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        playerLockOn.LockInput();
+
+    }
+    public void ChangeTargetInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        playerLockOn.ChangeTargetInput(context.ReadValue<float>());
+    }
+
+    //Combat
+    public void BasicAttackInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        playerCombat.BasicAttackInput();
+    }
+
+    #endregion
+
 }
