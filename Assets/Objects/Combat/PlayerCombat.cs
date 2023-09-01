@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private Weapon weapon;
     [SerializeField] private float comboCounterResetCooldown;
-    [SerializeField] private Animator animator;
+    private Animator animator;
 
     private int comboCounter = 0;
     private float comboCounterTimer;
@@ -18,6 +19,11 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         weapon?.Initialize(animator.runtimeAnimatorController);
+    }
+
+    public void Initialized(Animator _animator)
+    {
+        animator = _animator;
     }
 
     private void Update()

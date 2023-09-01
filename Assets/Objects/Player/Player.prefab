@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 3457027364135088005}
   - component: {fileID: 3457027364135088007}
   - component: {fileID: 3457027364135088000}
+  - component: {fileID: 3872397183151462394}
   - component: {fileID: 3457027364135088006}
   - component: {fileID: 3457027364135088001}
   - component: {fileID: 7148768569360158319}
@@ -379,6 +380,20 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3872397183151462394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457027364135088004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f8d0c08c677d14d954c083f19f658a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5496796775129815501}
+  freeLook: {fileID: 0}
 --- !u!114 &3457027364135088006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,12 +409,10 @@ MonoBehaviour:
   speed: 10
   turnSmoothTime: 0.1
   cam: {fileID: 0}
-  freeLook: {fileID: 0}
   cameraSpeed: {x: 7, y: -0.05}
   speedMultiplicator: 3
   dodgeDuration: 0.5
   dodgeCoolDown: 1
-  animator: {fileID: 5496796775129815501}
 --- !u!114 &3457027364135088001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +448,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: a8ec7a0d0e4ee684c94b9ed32a72b8eb, type: 2}
   comboCounterResetCooldown: 0.65
-  animator: {fileID: 5496796775129815501}
 --- !u!1 &3457027364594967333
 GameObject:
   m_ObjectHideFlags: 0

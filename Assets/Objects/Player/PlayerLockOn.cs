@@ -122,6 +122,7 @@ public class PlayerLockOn : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 
+
     #region Input Detection
 
     public void LockInput(InputAction.CallbackContext context)

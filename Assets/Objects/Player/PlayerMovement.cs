@@ -9,6 +9,7 @@ using System.Linq;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
+    private Animator animator;
 
     [Header("Movement")]
     [SerializeField] private float speed;
@@ -19,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private Transform cam;
-    [SerializeField] private CinemachineFreeLook freeLook;
-    private Vector2 cameraMovementInput;
     [SerializeField] Vector2 cameraSpeed;
+    private CinemachineFreeLook freeLook;
+    private Vector2 cameraMovementInput;
 
     [Header("Dodge")]
     [SerializeField] private float speedMultiplicator;
@@ -30,13 +31,18 @@ public class PlayerMovement : MonoBehaviour
     private float dodgeDurationTimer;
     [SerializeField] private float dodgeCoolDown;
     private float dodgeCoolDownTimer;
-    [SerializeField] private Animator animator;
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         actualSpeed = speed;
+    }
+
+    public void Initialized(CinemachineFreeLook _freeLook, Animator _animator)
+    {
+        freeLook = _freeLook;
+        animator = _animator;
     }
 
     void FixedUpdate()
