@@ -341,13 +341,13 @@ MonoBehaviour:
     m_ActionName: PlayerMovement/LockOn[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 3457027364135088006}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: CameraMovementInput
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -387,6 +387,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4bb9a6ee-67ab-4aef-8f59-e5627f06c1f5
     m_ActionName: PlayerMovement/BasicAttack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3457027364135088006}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: DodgeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a1ff6c23-7a21-40be-b86e-6e78617b02e2
+    m_ActionName: PlayerMovement/Dodge[/XInputControllerWindows/leftTrigger,/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -407,6 +423,12 @@ MonoBehaviour:
   speed: 10
   turnSmoothTime: 0.1
   cam: {fileID: 0}
+  freeLook: {fileID: 0}
+  cameraSpeed: {x: 7, y: -0.05}
+  speedMultiplicator: 3
+  dodgeDuration: 0.3
+  dodgeCoolDown: 1
+  animator: {fileID: 5496796775129815501}
 --- !u!114 &3457027364135088001
 MonoBehaviour:
   m_ObjectHideFlags: 0
