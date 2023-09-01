@@ -26,20 +26,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dodge")]
     [SerializeField] private float speedMultiplicator;
     private Vector3 dodgeDir;
-
     [SerializeField] private float dodgeDuration;
-    private float ondodgeDurationTimer;
-
+    private float dodgeDurationTimer;
     [SerializeField] private float dodgeCoolDown;
     private float dodgeCoolDownTimer;
-
     [SerializeField] private Animator animator;
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
         actualSpeed = speed;
     }
 
@@ -58,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y);
         Vector3 moveDir = Vector3.zero;
 
-        if (ondodgeDurationTimer > 0)
+        if (dodgeDurationTimer > 0)
         {
             moveDir = dodgeDir;
 
@@ -91,20 +87,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Dodge()
     {
-        if (ondodgeDurationTimer > 0 || dodgeCoolDownTimer > 0) return;
+        if (dodgeDurationTimer > 0 || dodgeCoolDownTimer > 0) return;
 
         actualSpeed = speed * speedMultiplicator;
-        ondodgeDurationTimer = dodgeDuration;
+        dodgeDurationTimer = dodgeDuration;
         dodgeCoolDownTimer = dodgeCoolDown;
         animator.Play("Dodge");
     }
 
     void ResetDodge()
     {
-        ondodgeDurationTimer -= Time.deltaTime;
+        dodgeDurationTimer -= Time.deltaTime;
         dodgeCoolDownTimer -= Time.deltaTime;
 
-        if (ondodgeDurationTimer < 0)
+        if (dodgeDurationTimer < 0)
         {
             animator.Play("Idle");
             actualSpeed = speed;
