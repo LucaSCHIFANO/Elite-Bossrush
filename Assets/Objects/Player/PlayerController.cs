@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Component")]
     [SerializeField] private Animator animator;
     [SerializeField] private CinemachineFreeLook freeLook;
+    [SerializeField] private CinemachineVirtualCamera targetCamera;
 
     void Awake()
     {
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         playerMovement.Initialized(freeLook, animator);
-        playerCombat.Initialized(animator);
+        playerLockOn.Initialized(targetCamera);
+        playerCombat.Initialized(animator, targetCamera);
     }
 
     #region Inputs Detection

@@ -10,8 +10,8 @@ public class PlayerLockOn : MonoBehaviour
     private bool isLock;
 
     [Header("Camera")]
-    [SerializeField] private CinemachineVirtualCamera targetCamera;
     [SerializeField] private CinemachineStateDrivenCamera cameraState;
+    CinemachineVirtualCamera targetCamera;
     private Animator animator;
 
     [Header("Lock")]
@@ -29,11 +29,10 @@ public class PlayerLockOn : MonoBehaviour
         animator = cameraState.m_AnimatedTarget;
     }
 
-    void Update()
+    public void Initialized(CinemachineVirtualCamera _targetCamera)
     {
-        
+        targetCamera = _targetCamera;
     }
-
     void SetTarget()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, lockableMask);
@@ -111,6 +110,7 @@ public class PlayerLockOn : MonoBehaviour
     void EmptyTarget()
     {
         animator.Play("ThirdPersonCamera");
+        targetCamera.LookAt = null;
         isLock = !isLock;
         currentTarget = null;
         lockUI.SetTarget(null);

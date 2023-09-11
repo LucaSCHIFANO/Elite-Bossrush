@@ -9,6 +9,7 @@ public class PlayerCombat : MonoBehaviour
 {
     private Camera mainCamera;
 
+    [Header("Melee Weapon")]
     [SerializeField] private Weapon weapon;
     [SerializeField] private float comboCounterResetCooldown;
     private Animator animator;
@@ -18,7 +19,12 @@ public class PlayerCombat : MonoBehaviour
     private bool attackInputTriggered;
     private bool isAttacking;
 
+    [Header("Range Weapon")]
     [SerializeField] private Gun gun;
+    [SerializeField] private float raycastShootThickness;
+    [SerializeField] private float maxDistanceCheck;
+    private CinemachineVirtualCamera targetCamera;
+
     private bool shootInputTriggered;
 
 
@@ -27,10 +33,12 @@ public class PlayerCombat : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    public void Initialized(Animator _animator)
+    public void Initialized(Animator _animator, CinemachineVirtualCamera _targetCamera)
     {
         animator = _animator;
         weapon?.Initialize(animator.runtimeAnimatorController);
+
+        targetCamera = _targetCamera;
     }
 
     private void Update()
@@ -50,6 +58,7 @@ public class PlayerCombat : MonoBehaviour
         if (attackInputTriggered)
             TriggerAttack();
 
+        // Trigger Shoot if input buffered
         if (shootInputTriggered)
             TriggerShoot();
     }
@@ -89,23 +98,31 @@ public class PlayerCombat : MonoBehaviour
     private void TriggerShoot()
     {
         shootInputTriggered = false;
-        GetProjectileDirection();
+        var targetedPoint = GetProjectileDirection();
+        var direction = (targetedPoint - transform.position).normalized;
+        if(gun.projectileType == Gun.ProjectileType.Projectile)
+        {
+            Instantiate(gun.GetProjectile(), transform.position, transform.rotation).GetComponent<Projectile>().Initialized(direction);
+        }
     }
 
     private Vector3 GetProjectileDirection()
     {
+        if (targetCamera.m_LookAt != null) return targetCamera.LookAt.position;
+
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 1000))
+        //if(Physics.SphereCast(ray, raycastShootThickness, out hit, maxDistanceCheck))
+        if(Physics.Raycast(ray, out hit, maxDistanceCheck))
         {
-            Debug.Log(hit.collider.name);
+            return hit.point;
         }
         else
         {
-            Debug.Log("Nothing to hit");
+            Debug.Log("nothing to shoot at");
+            return ray.GetPoint(maxDistanceCheck);
 
         }
-        return Vector3.back;
     }
 
 

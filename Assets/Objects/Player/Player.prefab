@@ -345,8 +345,8 @@ MonoBehaviour:
     m_ActionName: PlayerMovement/ChangeTarget[/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7148768569360158319}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+      - m_Target: {fileID: 3872397183151462394}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: BasicAttackInput
         m_Mode: 0
         m_Arguments:
@@ -375,6 +375,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a1ff6c23-7a21-40be-b86e-6e78617b02e2
     m_ActionName: PlayerMovement/Dodge[/XInputControllerWindows/leftTrigger,/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3872397183151462394}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ShootInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 240d30b4-c305-4039-a5fb-197c70da0a4b
+    m_ActionName: PlayerMovement/Shoot[/XInputControllerWindows/rightTrigger,/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -394,6 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5496796775129815501}
   freeLook: {fileID: 0}
+  targetCamera: {fileID: 0}
 --- !u!114 &3457027364135088006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +426,7 @@ MonoBehaviour:
   speed: 10
   turnSmoothTime: 0.1
   cam: {fileID: 0}
-  cameraSpeed: {x: 7, y: -0.05}
+  cameraSpeed: {x: 4, y: -0.05}
   speedMultiplicator: 3
   dodgeDuration: 0.5
   dodgeCoolDown: 1
@@ -426,7 +443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraState: {fileID: 0}
-  targetCamera: {fileID: 0}
   checkRadius: 25
   lockableMask:
     serializedVersion: 2
@@ -448,6 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: a8ec7a0d0e4ee684c94b9ed32a72b8eb, type: 2}
   comboCounterResetCooldown: 0.65
+  gun: {fileID: 11400000, guid: 22228bdcb2965c34fabccba76e6eb048, type: 2}
+  maxDistanceCheck: 100
 --- !u!1 &3457027364594967333
 GameObject:
   m_ObjectHideFlags: 0
