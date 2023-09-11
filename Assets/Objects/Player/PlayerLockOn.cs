@@ -10,9 +10,9 @@ public class PlayerLockOn : MonoBehaviour
     private bool isLock;
 
     [Header("Camera")]
-    [SerializeField] private CinemachineStateDrivenCamera cameraState;
     [SerializeField] private CinemachineVirtualCamera targetCamera;
-    private Animator anim;
+    [SerializeField] private CinemachineStateDrivenCamera cameraState;
+    private Animator animator;
 
     [Header("Lock")]
     [SerializeField] float checkRadius;
@@ -26,7 +26,7 @@ public class PlayerLockOn : MonoBehaviour
 
     void Awake()
     {
-        anim = cameraState.m_AnimatedTarget;
+        animator = cameraState.m_AnimatedTarget;
     }
 
     void Update()
@@ -101,7 +101,7 @@ public class PlayerLockOn : MonoBehaviour
 
     void ApplyTarget(GameObject newTarget)
     {
-        anim.Play("TargetCamera");
+        animator.Play("TargetCamera");
         targetCamera.LookAt = newTarget.transform;
         isLock = !isLock;
         currentTarget = newTarget;
@@ -110,7 +110,7 @@ public class PlayerLockOn : MonoBehaviour
 
     void EmptyTarget()
     {
-        anim.Play("ThirdPersonCamera");
+        animator.Play("ThirdPersonCamera");
         isLock = !isLock;
         currentTarget = null;
         lockUI.SetTarget(null);

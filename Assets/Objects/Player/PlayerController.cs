@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Component")]
     [SerializeField] private Animator animator;
     [SerializeField] private CinemachineFreeLook freeLook;
-    
+
     void Awake()
     {
         playerCombat = GetComponent<PlayerCombat>();
@@ -64,6 +64,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!context.performed) return;
         playerCombat.BasicAttackInput();
+    }
+
+    public void ShootInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        playerCombat.ShootInput();
     }
 
     #endregion
