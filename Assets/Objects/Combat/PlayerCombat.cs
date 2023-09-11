@@ -100,9 +100,10 @@ public class PlayerCombat : MonoBehaviour
         shootInputTriggered = false;
         var targetedPoint = GetProjectileDirection();
         var direction = (targetedPoint - transform.position).normalized;
+
         if(gun.projectileType == Gun.ProjectileType.Projectile)
         {
-            Instantiate(gun.GetProjectile(), transform.position, transform.rotation).GetComponent<Projectile>().Initialized(direction);
+            Instantiate(gun.GetProjectile(), transform.position, transform.rotation).GetComponent<Projectile>()?.Initialized(direction);
         }
     }
 
@@ -112,6 +113,7 @@ public class PlayerCombat : MonoBehaviour
 
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
+
         //if(Physics.SphereCast(ray, raycastShootThickness, out hit, maxDistanceCheck))
         if(Physics.Raycast(ray, out hit, maxDistanceCheck))
         {

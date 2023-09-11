@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: FireGun
   m_EditorClassIdentifier: 
   projectileType: 0
+  projectile: {fileID: 2038172553580237489, guid: 508e9b0d3b97fc64d91e700bb1cb88e9,
+    type: 3}
