@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,17 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Combat/Attack")]
 public class Attack : ScriptableObject
 {
-    public float damage;
-    public bool ComboEnd;
-
+    public bool IsComboEnd;
+    public float GetDamage { get => CanBeSpecial && IsSpecial ? specialDamage : damage; }
+    
+    [HideInInspector] public bool IsSpecial { private get; set; }
+    
     [SerializeField] private AnimationClip attackAnimationClip;
+    
+    [SerializeField] private float damage;
+
+    [SerializeField] private bool CanBeSpecial;
+    [SerializeField, ShowIf(nameof(CanBeSpecial))] private float specialDamage;
 
     public AnimatorOverrideController AnimationOverride { get; private set; }
     public float ClipLength { get => attackAnimationClip.length; }
@@ -22,6 +30,6 @@ public class Attack : ScriptableObject
 
     public void Activate()
     {
-        Debug.Log($"Hiyyaaa!  {{{damage} dmg}}");
+        Debug.Log($"Hiyyaaa!  {{{GetDamage} dmg}}" + (IsSpecial ? " SPECIAL ATTACK !!!" : "."));
     }
 }

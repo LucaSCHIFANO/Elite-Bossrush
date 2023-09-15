@@ -60,9 +60,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "SpecialAttack",
                     "type": "Button",
-                    "id": "240d30b4-c305-4039-a5fb-197c70da0a4b",
+                    "id": "f983e4ad-870a-4b59-99ed-b9e13e4a48c7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -424,23 +424,23 @@
                 },
                 {
                     "name": "",
-                    "id": "e91217f1-344e-4e1c-9038-0bd3dd2f4f4a",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "e6d6c577-41e4-4fd7-bbed-0f78e05e80a6",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "SpecialAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1d8f250b-30fc-4671-86ec-e3c25c09d3f5",
-                    "path": "<Keyboard>/leftCtrl",
+                    "id": "6beff6f0-6ec1-447b-95f7-8e66af246181",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "SpecialAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

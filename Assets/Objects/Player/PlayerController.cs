@@ -68,6 +68,12 @@ public class PlayerController : MonoBehaviour
         playerCombat.BasicAttackInput();
     }
 
+    public void SpecialAttackInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        playerCombat.SpecialAttackInput();
+    }
+
     public void ShootInput(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
