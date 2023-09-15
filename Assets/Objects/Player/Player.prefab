@@ -391,6 +391,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f983e4ad-870a-4b59-99ed-b9e13e4a48c7
     m_ActionName: PlayerMovement/SpecialAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3872397183151462394}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ShootInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec1c14d8-7c17-42dc-af38-e836aebcc085
+    m_ActionName: PlayerMovement/Shoot[/Mouse/middleButton,/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -410,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5496796775129815501}
   freeLook: {fileID: 0}
+  targetCamera: {fileID: 0}
 --- !u!114 &3457027364135088006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraState: {fileID: 0}
-  targetCamera: {fileID: 0}
   checkRadius: 25
   lockableMask:
     serializedVersion: 2
@@ -464,6 +480,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: a8ec7a0d0e4ee684c94b9ed32a72b8eb, type: 2}
   comboCounterResetCooldown: 0.65
+  gun: {fileID: 0}
+  raycastShootThickness: 0.1
+  maxDistanceCheck: 100
 --- !u!1 &3457027364594967333
 GameObject:
   m_ObjectHideFlags: 0
