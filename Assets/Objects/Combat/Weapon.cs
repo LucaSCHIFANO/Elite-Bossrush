@@ -13,8 +13,10 @@ public class Weapon : ScriptableObject
             moveset[i].Initialize(runtimePlayerAnimationController);
     }
 
-    public Attack GetAttackFromCombo(int comboIndex)
+    public Attack GetAttackFromCombo(int comboIndex, AttackInputType inputType)
     {
-        return moveset[comboIndex];
+        var attack = moveset[comboIndex];
+        attack.IsSpecial = inputType == AttackInputType.Special;
+        return attack;
     }
 }

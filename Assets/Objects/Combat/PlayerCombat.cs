@@ -13,7 +13,10 @@ public class PlayerCombat : MonoBehaviour
 
     private int comboCounter = 0;
     private float comboCounterTimer;
+
     private bool attackInputTriggered;
+    private AttackInputType attackInputType;
+
     private bool isAttacking;
 
     private void Start()
@@ -46,13 +49,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void TriggerAttack()
     {
-        var attack = weapon.GetAttackFromCombo(comboCounter);
+        var attack = weapon.GetAttackFromCombo(comboCounter, attackInputType);
 
         animator.runtimeAnimatorController = attack.AnimationOverride;
         animator.Play("Attack");
         attack.Activate();
 
-        if (attack.ComboEnd)
+        if (attack.IsComboEnd || attackInputType == AttackInputType.Special)
             Invoke(nameof(EndCombo), attack.ClipLength);
         else
         {
@@ -74,6 +77,7 @@ public class PlayerCombat : MonoBehaviour
     {
         EndAttack();
         comboCounter = 0;
+        attackInputType = AttackInputType.None;
     }
 
 
@@ -82,6 +86,13 @@ public class PlayerCombat : MonoBehaviour
     public void BasicAttackInput()
     {
         attackInputTriggered = true;
+        attackInputType = AttackInputType.Basic;
+    }
+
+    public void SpecialAttackInput()
+    {
+        attackInputTriggered = true;
+        attackInputType = AttackInputType.Special;
     }
 
     #endregion

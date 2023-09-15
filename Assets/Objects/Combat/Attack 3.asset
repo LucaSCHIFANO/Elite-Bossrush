@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a0e707c90033841b0d3dcce45be60b, type: 3}
   m_Name: Attack 3
   m_EditorClassIdentifier: 
-  damage: 5000
-  ComboEnd: 1
+  IsComboEnd: 1
   attackAnimationClip: {fileID: 7400000, guid: 10c2c896b4fa55c45af3ef4324e35e43, type: 2}
+  damage: 100
+  CanBeSpecial: 1
+  specialDamage: 5000
