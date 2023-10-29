@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Attack 3
   m_EditorClassIdentifier: 
   IsComboEnd: 1
-  attackAnimationClip: {fileID: 7400000, guid: 10c2c896b4fa55c45af3ef4324e35e43, type: 2}
+  attackAnimationClip: {fileID: -203655887218126122, guid: 3c09f665cbe5ca84c90f444cbd347f52,
+    type: 3}
   damage: 100
   CanBeSpecial: 1
   specialDamage: 5000

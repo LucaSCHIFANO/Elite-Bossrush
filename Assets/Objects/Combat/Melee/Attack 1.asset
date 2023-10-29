@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a0e707c90033841b0d3dcce45be60b, type: 3}
   m_Name: Attack 1
   m_EditorClassIdentifier: 
+  IsComboEnd: 0
+  attackAnimationClip: {fileID: -203655887218126122, guid: d1f19728a35dcd246bbdd9054a5934d7,
+    type: 3}
   damage: 5
-  ComboEnd: 0
-  attackAnimationClip: {fileID: 7400000, guid: 771dd5d0c52bdbd4c95294e745720dc2, type: 2}
+  CanBeSpecial: 0
+  specialDamage: 0
